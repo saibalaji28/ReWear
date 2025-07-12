@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #4e9eff;
+      --blue-dark: #357de0;
+      --white: #ffffff;
+      --gray-dark: #1f1f1f;
+      --gray-light: #f0f0f0;
+      --gradient-bg: linear-gradient(135deg, #fff7f1 0%, #f0f8ff 100%);
+      --glass: rgba(255, 255, 255, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--gradient-bg);
+      color: var(--gray-dark);
+      padding: 2rem;
+      overflow-x: hidden;
+    }
+    .dashboard {
+      max-width: 1200px;
+      margin: auto;
+      animation: fadeIn 1.2s ease;
+      position: relative;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding: 1rem 2rem;
+      border-radius: 16px;
+      background: linear-gradient(to right, #fff5ec, #e6f0ff);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      animation: slideDown 0.8s ease-in-out;
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--gray-dark);
+    }
+    .header span {
+      font-size: 1rem;
+      color: var(--blue-dark);
+      font-weight: 600;
+    }
+    .profile-section {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+      animation: profileAppear 1s ease forwards;
+    }
+    @keyframes profileAppear {
+      0% {
+        opacity: 0;
+        transform: scale(0.8) rotateY(180deg);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotateY(0deg);
+      }
+    }
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, var(--blue), var(--blue-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 4px solid var(--blue);
+      transition: all 0.4s ease;
+      animation: floatY 3s ease-in-out infinite;
+    }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    @keyframes floatY {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    .avatar:hover {
+      transform: scale(1.1) rotate(2deg);
+    }
+    .info-boxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1.2rem;
+      flex: 1;
+    }
+    .info-box, .main-box {
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      animation: cardFadeIn 0.8s ease forwards;
+    }
+    @keyframes cardFadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    .info-box:hover, .main-box:hover {
+      transform: translateY(-6px);
+    }
+    .main-box {
+      grid-column: span 3;
+      height: 110px;
+    }
+    .section {
+      margin-top: 2.5rem;
+      animation: fadeInUp 1s ease forwards;
+    }
+    .section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      border-left: 5px solid var(--blue);
+      padding-left: 0.75rem;
+      color: var(--blue-dark);
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      height: 200px;
+      background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      border-radius: 16px;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+      overflow: hidden;
+      cursor: pointer;
+      animation: fadeSlideUp 1s ease forwards;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    @keyframes fadeSlideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    .tag {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 0.8rem;
+      padding: 0.4rem 0.7rem;
+      border-radius: 6px;
+      font-weight: 600;
+      animation: none;
+    }
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: #fff;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      transition: transform 0.4s ease-in-out;
+    }
+    .popup.active {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .popup-btn {
+      background: var(--blue);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+    .popup-btn:hover {
+      background: var(--blue-dark);
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 999;
+      display: none;
+    }
+    .overlay.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <div class="header">
+      <h1>User Dashboard</h1>
+      <span>Screen 6</span>
+    </div>
+
+    <div class="profile-section">
+      <div class="avatar">
+        <img src="https://via.placeholder.com/150" alt="Profile Picture">
+      </div>
+      <div class="info-boxes">
+        <div class="info-box">Name</div>
+        <div class="info-box">Mail_ID</div>
+        <div class="info-box">Contact</div>
+        <div class="info-box">Address</div>
+        <div class="info-box">Rewards</div>
+        <div class="info-box">Cashbacks</div>
+        <div class="main-box">Bio</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>My Listings</h2>
+      <div class="cards">
+        <div class="card"><img src="https://via.placeholder.com/150" alt="Listing 1"><div class="tag">Trending Fit</div></div>
+        <div class="card"><img src="https://via.placeholder.com/150" alt="Listing 2"></div>
+        <div class="card"><img src="https://via.placeholder.com/150" alt="Listing 3"></div>
+        <div class="card"><img src="https://via.placeholder.com/150" alt="Listing 4"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>My Purchases</h2>
+      <div class="cards">
+        <div class="card"><img src="https://via.placeholder.com/150" alt="Purchase 1"></div>
+        <div class="card"><img src="https://via.placeholder.com/150" alt="Purchase 2"></div>
+        <div class="card"><img src="https://via.placeholder.com/150" alt="Purchase 3"></div>
+        <div class="card"><img src="https://via.placeholder.com/150" alt="Purchase 4"></div>
+      </div>
+    </div>
+
+    <button class="popup-btn" onclick="togglePopup()">Open Popup</button>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="popup" id="popup">
+    <h2>Welcome to ReWear!</h2>
+    <p>This is a popup message to engage users with premium design feel!</p>
+    <button class="popup-btn" onclick="togglePopup()">Close</button>
+  </div>
+
+  <script>
+    function togglePopup() {
+      document.getElementById('popup').classList.toggle('active');
+      document.getElementById('overlay').classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

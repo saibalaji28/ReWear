@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReWear - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=Manrope:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --highlight: #1e90ff;
+      --text-dark: #0d1b2a;
+      --container-bg: #f8f9fa;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Outfit', 'Manrope', sans-serif;
+      background-color: #ffffff;
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #ffffff;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      width: 130px;
+      height: 50px;
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateX(-30px);
+      animation: fadeSlideIn 1s ease forwards;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    nav a {
+      margin-left: 20px;
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: var(--highlight);
+      color: white;
+    }
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      animation: fadeInUp 1s ease both;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 600px;
+      margin: auto;
+      margin-bottom: 30px;
+      color: #555;
+      animation: fadeInUp 1.2s ease both;
+    }
+
+    .hero button {
+      padding: 10px 20px;
+      background-color: var(--highlight);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      margin: 10px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: background-color 0.3s;
+    }
+
+    .hero button:hover {
+      background-color: #0078e6;
+    }
+
+    .search-bar {
+      max-width: 320px;
+      margin: 0 auto 40px;
+      display: flex;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 12px;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      animation: fadeInUp 1.3s ease both;
+    }
+
+    .search-bar input {
+      flex: 1;
+      padding: 0 14px;
+      font-size: 13px;
+      border: none;
+      background: transparent;
+      outline: none;
+      color: #333;
+    }
+
+    .search-bar button {
+      padding: 0 14px;
+      background-color: var(--highlight);
+      border: none;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .search-bar button:hover {
+      background-color: #0078e6;
+    }
+
+    .carousel img {
+      width: 100%;
+      max-width: 1200px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      animation: fadeInUp 1.4s ease both;
+    }
+
+    .category-grid, .product-grid {
+      display: grid;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .category-grid {
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+
+    .product-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .category-box, .product-card {
+      background-color: var(--container-bg);
+      border-radius: 12px;
+      padding: 15px;
+      color: #333;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      animation: fadeInUp 1.5s ease both;
+    }
+
+    .category-box:hover, .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0, 123, 255, 0.2);
+    }
+
+    .category-box img, .product-card img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 28px; }
+      nav a { font-size: 14px; margin-left: 10px; }
+      .product-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+    }
+  </style>
+
+<body>
+
+  <!-- Navigation Header -->
+  <header>
+    <div class="logo">
+      <img src="ReWear_logo.png" alt="ReWear Logo">
+      <h2>ReWear</h2>
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Browse</a>
+      <a href="loginpage.html">Login</a>
+      <a href="register.html">Sign Up</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to ReWear</h1>
+    <p>Exchange your unused clothes and embrace sustainable fashion through direct swaps or point-based redemptions.</p>
+    <button>Start Swapping</button>
+    <button>Browse Items</button>
+  </section>
+
+  <!-- Search Bar -->
+  <section class="search-bar fade-on-scroll">
+    <input type="text" placeholder="Search clothing items...">
+    <button>🔍</button>
+  </section>
+
+  <!-- Carousel -->
+  <section class="carousel fade-on-scroll">
+    <img src="https://via.placeholder.com/1200x300?text=Featured+Banner" alt="Featured Clothing">
+  </section>
+
+  <!-- Categories -->
+  <section class="categories fade-on-scroll">
+    <h2 class="section-title">Categories</h2>
+    <div class="category-grid">
+      <div class="category-box">
+        <img src="https://via.placeholder.com/150x120?text=Men" alt="Men">
+        <div>Men</div>
+      </div>
+      <div class="category-box">
+        <img src="https://via.placeholder.com/150x120?text=Women" alt="Women">
+        <div>Women</div>
+      </div>
+      <div class="category-box">
+        <img src="https://via.placeholder.com/150x120?text=Kids" alt="Kids">
+        <div>Kids</div>
+      </div>
+      <div class="category-box">
+        <img src="https://via.placeholder.com/150x120?text=Winter" alt="Winter">
+        <div>Winter</div>
+      </div>
+      <div class="category-box">
+        <img src="https://via.placeholder.com/150x120?text=Summer" alt="Summer">
+        <div>Summer</div>
+      </div>
+      <div class="category-box">
+        <img src="https://via.placeholder.com/150x120?text=Accessories" alt="Accessories">
+        <div>Accessories</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section class="product-listings fade-on-scroll">
+    <h2 class="section-title">Latest Listings</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300x120?text=Jacket" alt="Jacket">
+        <div>Denim Jacket</div>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300x120?text=Dress" alt="Dress">
+        <div>Summer Dress</div>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300x120?text=Hoodie" alt="Hoodie">
+        <div>Hoodie</div>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300x120?text=Kurta" alt="Kurta">
+        <div>Kurta Set</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scroll Animation Script -->
+  <script>
+    const elements = document.querySelectorAll('.fade-on-scroll');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    });
+
+    elements.forEach(el => observer.observe(el));
+  </script>
+</body>
+
+</html>
