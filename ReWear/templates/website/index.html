@@ -1,245 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ReWear - Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReWear - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=Manrope:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --highlight: #1e90ff;
+      --highlight-dark: #0078e6;
+      --text-dark: #0d1b2a;
+      --container-bg: #f8f9fa;
+      --glass-bg: rgba(255, 255, 255, 0.4);
+      --gradient-bg: linear-gradient(120deg, #f0f8ff, #fceff9);
+    }
 
-        body {
-            font-family: "Poppins", sans-serif;
-            background: linear-gradient(-45deg, #0d1b2a, #1b263b, #274472, #102542);
-            background-size: 400% 400%;
-            animation: auroraFlow 15s ease infinite;
-            color: white;
-            overflow-x: hidden;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        @keyframes auroraFlow {
-            0% {
-                background-position: 0% 50%;
-            }
+    body {
+      font-family: 'Outfit', 'Manrope', sans-serif;
+      background: var(--gradient-bg);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
 
-            50% {
-                background-position: 100% 50%;
-            }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--glass-bg);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 12px rgba(14, 235, 255, 0.06);
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      animation: fadeInDown 1s ease both;
+    }
 
-            100% {
-                background-position: 0% 50%;
-            }
-        }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: fadeSlideIn 1s ease forwards;
+    }
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background-color: rgba(0, 0, 0, 0.5);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(5px);
-        }
+    .logo img {
+      width: 140px;
+      height: 50px;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    }
 
-        .logo {
-            display: flex;
-            align-items: center;
-        }
+    .logo h2 {
+      font-size: 1.5rem;
+      color: var(--highlight);
+    }
 
-        .logo img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid #1e90ff;
-            margin-right: 10px;
-        }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
 
-        nav a {
-            margin-left: 20px;
-            color: #1e90ff;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
+    nav a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      font-family: poppins, sans-serif;
+      padding: 6px 10px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-        nav a:hover {
-            color: #ffffff;
-        }
+    nav a:hover {
+      background-color: var(--highlight);
+      color: white;
+    }
 
-        .hero {
-            padding: 60px 20px;
-            text-align: center;
-        }
+    .search-toggle {
+      cursor: pointer;
+      font-size: 18px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
 
-        .hero h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
+    .search-toggle:hover {
+      background-color: var(--highlight);
+      color: white;
+    }
 
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    .popup-search {
+      position: absolute;
+      top: 70px;
+      right: 40px;
+      display: none;
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      padding: 8px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 225, 255, 0.1);
+    }
 
-        .hero button {
-            padding: 12px 24px;
-            background-color: #1e90ff;
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-weight: bold;
-            margin: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+    .popup-search input {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 8px;
+      width: 200px;
+      outline: none;
+    }
 
-        .hero button:hover {
-            background-color: #1c86ee;
-        }
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
 
-        .search-bar {
-            max-width: 500px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            background-color: #ffffff;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 30px;
-        }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      animation: fadeInUp 1s ease both;
+    }
 
-        .search-bar input {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            font-size: 16px;
-        }
+    .hero p {
+      font-size: 18px;
+      max-width: 600px;
+      margin: auto;
+      margin-bottom: 30px;
+      color: #444;
+      animation: fadeInUp 1.2s ease both;
+    }
 
-        .search-bar button {
-            padding: 12px;
-            background-color: #1e90ff;
-            border: none;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-        }
+    .hero img {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      border-radius: 16px;
+      margin: 30px auto;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      animation: fadeInUp 1.3s ease both;
+    }
 
-        .carousel,
-        .categories,
-        .product-listings {
-            padding: 40px 20px;
-            text-align: center;
-        }
+    .hero button {
+      padding: 10px 24px;
+      background: linear-gradient(145deg, var(--highlight), var(--highlight-dark));
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      margin: 10px;
+      cursor: pointer;
+      font-size: 15px;
+      box-shadow: 0 8px 20px rgba(30, 144, 255, 0.3);
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
 
-        .carousel img {
-            width: 100%;
-            max-height: 300px;
-            object-fit: cover;
-            border-radius: 12px;
-        }
+    .hero button:hover {
+      transform: translateY(-2px);
+      background: var(--highlight-dark);
+    }
 
-        .categories h2,
-        .product-listings h2 {
-            margin-bottom: 20px;
-            font-size: 24px;
-            color: #1e90ff;
-        }
+    .carousel img {
+      width: 100%;
+      max-width: 1200px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      animation: fadeInUp 1.4s ease both;
+    }
 
-        .category-grid,
-        .product-grid {
-            display: grid;
-            gap: 20px;
-            justify-content: center;
-        }
+    .category-grid, .product-grid {
+      display: grid;
+      gap: 20px;
+      justify-content: center;
+    }
 
-        .category-grid {
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        }
+    .category-grid {
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
 
-        .product-grid {
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        }
+    .product-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
 
-        .category-box,
-        .product-card {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            color: white;
-            transition: transform 0.3s;
-        }
+    .category-box, .product-card {
+      background-color: var(--container-bg);
+      border-radius: 16px;
+      padding: 16px;
+      color: #333;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+      animation: fadeInUp 1.5s ease both;
+    }
 
-        .category-box:hover,
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-    </style>
+    .category-box:hover, .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0, 123, 255, 0.2);
+    }
+
+    .category-box img, .product-card img {
+      width: 100%;
+      height: 270px;
+      object-fit: cover;
+      border-radius: 40px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      color: var(--highlight-dark);
+      font-weight: 700;
+      animation: fadeInUp 1s ease both;
+    }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
-
 <body>
-    <header>
-        <div class="logo">
-            <img src="ReWear_logo.png" alt="ReWear Logo">
-            <h2>ReWear</h2>
-        </div>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Browse</a>
-            <a href="loginpage.html">Login</a>
-            <a href="register.html">Sign Up</a>
-        </nav>
-    </header>
+  <header>
+    <div class="logo">
+      <img src="../Images/ReWear_logo.png" alt="ReWear ">
+    
+    </div>
+    <nav>
+      <a href="index.html">🏠 Home</a>
+      <a href="#">🛍 Browse</a>
+      <a href="login.html">🔐 Login</a>
+      <a href="signup.html">📝 Sign Up</a>
+      <div class="search-toggle" onclick="toggleSearch()">🔍</div>
+    </nav>
+    <div class="popup-search" id="popupSearch">
+      <input type="text" placeholder="Search...">
+    </div>
+  </header>
 
-    <section class="hero">
-        <h1>Welcome to ReWear</h1>
-        <p>Exchange your unused clothes and embrace sustainable fashion through direct swaps or point-based redemptions.
-        </p>
-        <button>Start Swapping</button>
-        <a href="{% url 'item' %}">
-            <button class="btn btn-primary">Browse Items</button>
-        </a>
-    </section>
+  <section class="hero">
+    <h1>Welcome to ReWear</h1>
+    <p>Exchange your unused clothes and embrace sustainable fashion through direct swaps or point-based redemptions.</p>
+    <div>
+      <button>Start Swapping</button>
+      <button>Browse Items</button>
+    </div>
+  </section>
+  <section class="categories fade-on-scroll">
+    <h2 class="section-title">Categories</h2>
+    <div class="category-grid">
+      <div class="category-box"><img src="../Images/ReWare Fits-20250712T062302Z-1-001/ReWare Fits/home01.jpg" alt="Men"><div>Men</div></div>
+      <div class="category-box"><img src="../Images/ReWare Fits-20250712T062302Z-1-001/ReWare Fits/049195c8-2a9f-4c78-bddc-e9ff306815f1.jpg" alt="Women"><div>Women</div></div>
+      <div class="category-box"><img src="../Images/ReWare Fits-20250712T062302Z-1-001/ReWare Fits/download.jpeg" alt="Kids"><div>Kids</div></div>
+      <div class="category-box"><img src="../Images/ReWare Fits-20250712T062302Z-1-001/ReWare Fits/Уютный oversize_ 4 образа с большим теплым….jpg" alt="Winter"><div>Winter</div></div>
+      <div class="category-box"><img src="../Images/ReWare Fits-20250712T062302Z-1-001/ReWare Fits/home3.jpg" alt="Summer"><div>Summer</div></div>
+      <div class="category-box"><img src="../Images/ReWare Fits-20250712T062302Z-1-001/ReWare Fits/En çok satan keten görünümlü gömleğimiz, internet….jpg" alt="Accessories"><div>Accessories</div></div>
+    </div>
+  </section>
 
-    <section class="search-bar">
-        <input type="text" placeholder="Search clothing items...">
-        <button>🔍</button>
-    </section>
+  <section class="product-listings fade-on-scroll">
+    <h2 class="section-title">Latest Listings</h2>
+    <div class="product-grid">
+      <div class="product-card"><img src="../Images/ReWare Fits-20250712T062302Z-1-001/ReWare Fits/0112afab-e3da-45f4-99d8-7a72762849f3.jpg" alt="Jacket"><div>Denim Jacket</div></div>
+      <div class="product-card"><img src="../Images/ReWare Fits-20250712T062302Z-1-001/ReWare Fits/download (1).jpg" alt="Dress"><div>Summer Dress</div></div>
+      <div class="product-card"><img src="../Images/ReWare Fits-20250712T062302Z-1-001/ReWare Fits/Search.jpg" alt="Hoodie"><div>Hoodie</div></div>
+      <div class="product-card"><img src="https://via.placeholder.com/300x120?text=Kurta" alt="Kurta"><div>Kurta Set</div></div>
+    </div>
+  </section>
 
-    <section class="carousel">
-        <img src="featured-placeholder.jpg" alt="Featured Clothing">
-    </section>
+  <script>
+    const elements = document.querySelectorAll('.fade-on-scroll');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    });
+    elements.forEach(el => observer.observe(el));
 
-    <section class="categories">
-        <h2>Categories</h2>
-        <div class="category-grid">
-            <div class="category-box">Men</div>
-            <div class="category-box">Women</div>
-            <div class="category-box">Kids</div>
-            <div class="category-box">Winter</div>
-            <div class="category-box">Summer</div>
-            <div class="category-box">Accessories</div>
-        </div>
-    </section>
-
-    <section class="product-listings">
-        <h2>Latest Listings</h2>
-        <div class="product-grid">
-            <div class="product-card">Item 1</div>
-            <div class="product-card">Item 2</div>
-            <div class="product-card">Item 3</div>
-            <div class="product-card">Item 4</div>
-        </div>
-    </section>
+    function toggleSearch() {
+      const popup = document.getElementById("popupSearch");
+      popup.style.display = popup.style.display === "block" ? "none" : "block";
+    }
+  </script>
 </body>
-
 </html>
