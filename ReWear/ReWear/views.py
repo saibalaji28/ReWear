@@ -13,4 +13,4 @@ def signup(request):
     return render (request, 'website/signup.html')
 
 def item(request):
-    return render (request, 'website/item.html')
+    return render(request, 'myapp/item.html')
