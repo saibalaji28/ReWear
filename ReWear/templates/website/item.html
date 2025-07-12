@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Item Detail - ReWear</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #0f172a, #1e293b);
+            color: #ffffff;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #0f172a;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo span {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #60a5fa;
+            font-weight: 500;
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+            /* balanced top & bottom spacing */
+        }
+
+        .search-bar input {
+            width: 400px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px 0 0 6px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-bar button {
+            background-color: #3b82f6;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 0 6px 6px 0;
+            cursor: pointer;
+        }
+
+        .item-container {
+            display: flex;
+            justify-content: center;
+            padding: 30px 40px;
+            gap: 60px;
+        }
+
+        .main-image {
+            width: 300px;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail-section {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .thumbnail {
+            width: 60px;
+            height: 80px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .info-section {
+            max-width: 500px;
+        }
+
+        .info-section h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .info-section p {
+            margin: 10px 0;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .swap-btn {
+            background-color: #3b82f6;
+            color: #fff;
+        }
+
+        .points-btn {
+            background-color: #22c55e;
+            color: #fff;
+        }
+
+        .suggested-section {
+            padding: 40px;
+        }
+
+        .suggested-section h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .suggested-grid {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .suggested-item {
+            background-color: #1e293b;
+            border-radius: 10px;
+            padding: 15px;
+            width: 200px;
+            text-align: center;
+        }
+
+        .suggested-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .suggested-item p {
+            margin-top: 10px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="ReWear_logo.png" alt="ReWear Logo" />
+            <span>ReWear</span>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#">Browse</a>
+            <a href="loginpage.html">Login</a>
+            <a href="registrationpage.html">Sign Up</a>
+        </nav>
+    </header>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Search clothing items..." />
+        <button>&#128269;</button>
+    </div>
+
+    <section class="item-container">
+        <div>
+            <div class="main-image">
+                <img src="https://img.abercrombie.com/is/image/anf/KIC_144-3326-0027-211_prod1?policy=product-large"
+                    alt="Product" />
+            </div>
+            <div class="thumbnail-section">
+                <div class="thumbnail"><img
+                        src="https://img.abercrombie.com/is/image/anf/KIC_144-3326-0027-211_prod1?policy=product-large"
+                        alt="Thumb1" /></div>
+                <div class="thumbnail"><img
+                        src="https://img.abercrombie.com/is/image/anf/KIC_144-3326-0027-211_prod1?policy=product-large"
+                        alt="Thumb2" /></div>
+                <div class="thumbnail"><img
+                        src="https://img.abercrombie.com/is/image/anf/KIC_144-3326-0027-211_prod1?policy=product-large"
+                        alt="Thumb3" /></div>
+                <div class="thumbnail"><img
+                        src="https://img.abercrombie.com/is/image/anf/KIC_144-3326-0027-211_prod1?policy=product-large"
+                        alt="Thumb4" /></div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h1>Vintage Denim Jacket</h1>
+            <p>Classic blue denim jacket in excellent condition. Size M. Slightly worn but no visible damage. Ideal for
+                casual
+                wear.</p>
+            <p><strong>Uploader:</strong> JohnDoe</p>
+            <p><strong>Status:</strong> Available</p>
+            <div class="buttons">
+                <button class="swap-btn">Swap Request</button>
+                <button class="points-btn">Redeem via Points</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="suggested-section">
+        <h2>Suggested Products</h2>
+        <div class="suggested-grid">
+            <div class="suggested-item">
+                <img src="https://img.abercrombie.com/is/image/anf/KIC_144-3326-0027-211_prod1?policy=product-large"
+                    alt="Suggested1" />
+                <p>Floral Skirt</p>
+            </div>
+            <div class="suggested-item">
+                <img src="https://img.abercrombie.com/is/image/anf/KIC_144-3326-0027-211_prod1?policy=product-large"
+                    alt="Suggested2" />
+                <p>Leather Jacket</p>
+            </div>
+            <div class="suggested-item">
+                <img src="https://img.abercrombie.com/is/image/anf/KIC_144-3326-0027-211_prod1?policy=product-large"
+                    alt="Suggested3" />
+                <p>Blue Hoodie</p>
+            </div>
+            <div class="suggested-item">
+                <img src="https://img.abercrombie.com/is/image/anf/KIC_144-3326-0027-211_prod1?policy=product-large"
+                    alt="Suggested4" />
+                <p>Summer Dress</p>
+            </div>
+        </div>
+    </section>~
+
+</body>
+
+</html>
