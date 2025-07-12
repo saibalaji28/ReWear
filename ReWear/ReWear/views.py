@@ -5,8 +5,9 @@ def home(request):
     # return HttpResponse("Welcome to ReWear! This is the home page.")  
     return render(request, 'website/index.html')
 
-def about(request):
-    return HttpResponse("About ReWear: We are committed to sustainable fashion and reducing textile waste. Join us in our mission!")
+def login(request):
+    return render (request, 'website/login.html')
+    
 
-def contact(request):
-    return HttpResponse("Contact ReWear: info@rewear.com")  
+def signup(request):
+    return render (request, 'website/signup.html')
