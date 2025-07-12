@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReWear - Registration</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .registration-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            color: white;
+            text-align: center;
+        }
+
+        .registration-container h2 {
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        .registration-container input[type="text"],
+        .registration-container input[type="password"],
+        .registration-container input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .registration-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .registration-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .logo {
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid #4CAF50;
+        }
+
+        .social-login {
+            margin: 20px 0;
+        }
+
+        .social-login button {
+            background-color: #3b5998;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .social-login button:hover {
+            background-color: #304884;
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <div class="logo">
+            <img src="https://example.com/path-to-your-logo.png" alt="ReWear Logo">
+        </div>
+        <h2>Register</h2>
+        <form action="/dashboard" method="post">
+            <input type="text" placeholder="Username" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <input type="password" placeholder="Confirm Password" required>
+            <input type="submit" value="Register">
+        </form>
+        <div class="social-login">
+            <p>Or register with:</p>
+            <button>Facebook</button>
+            <button style="background-color: #db4437;">Google</button>
+        </div>
+    </div>
+</body>
+</html>
